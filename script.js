@@ -21,15 +21,9 @@ function countryList() {
     });
 
 }
-function addCountry(name) {
-
-    for (var i = 0; i < name.length; i++) {
-
-        countries.push(name[i]);
-    }
-
-    console.log(name);
-
+function addCountry() {
+const name= inputArea.value;
+countries.push(name)
 }
 
 
