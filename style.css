@@ -1,0 +1,13 @@
+body{
+    background: cadetblue;
+    font-family: 'Courier New', Courier, monospace;
+    
+}
+.container{
+    margin: auto;
+    width: 50%; 
+    border: solid black;
+    text-align: center;
+    justify-content: center;
+    align-content: center;
+}
