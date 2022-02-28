@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,20 +8,40 @@
     <title>Document</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <div class="container">
-        <button class="showbtn">show countries</button>
-        <ul  id="myList">
-            <li class="country"></li>
-        </ul>
-       
-       <div class="add">
-        <input type="text" class="inputField" >
-        <button class="addbtn">Add country</button>
-       </div>
-        
+        <div class="">
+            <h3>Country Flags Widget</h3>
+            <button class="showbtn">show countries</button> <button class="btn">sort BY(A-Z)</button> <button class="btn">sort BY(Z-A)</button>
+            <ul id="myList">
+                <li class="country"></li>
+            </ul>
+
+        </div>
+
+
+        <div class="add">
+            <input type="text" class="inputField">
+            <button class="addbtn">Add country</button>
+        </div>
+
+
+<br>
+
+<br>
+        <div class="">
+            <p>Search for a country using country name below</p><br>
+            <input type="text" class="searchField"  id = "Search" placeholder="Country name">
+            <button class="searchbtn">Search</button>
+        </div>
+        <div class="display">
+            <ul></ul>
+        </div>
+
     </div>
-    
+
 </body>
 <script src="script.js"></script>
+
 </html>
