@@ -6,8 +6,8 @@ let addBtn = document.querySelector('.addbtn')
 let show = document.querySelector('.showbtn')
 let country = document.querySelector('.country')
 let searchArea = document.querySelector('.searchField')
-let searchBtn = document.querySelector('.searchbtn')
 let displaySearch = document.querySelector('.display')
+let sort = document.querySelector('.sortbtn')
 
 
 // var storage = [];
@@ -21,12 +21,7 @@ function countryList() {
         li.innerText = item;
         country.appendChild(li);
     });
-    setTimeout(function () {
-        li.innerText = ''
-
-
-
-    }, 5000);
+    
 
 }
 function addCountry() {
@@ -34,10 +29,17 @@ function addCountry() {
     countries.push(name)
 }
 
+function sortAlphabetically(){
+    let sortedCountries = countries.sort().join('')
 
+    console.log(sortedCountries + 9999999999);
+    return sortedCountries
+}
 
 show.addEventListener('click', countryList)
 addBtn.addEventListener('click', addCountry)
+sort.addEventListener('click',sortAlphabetically)
+
 
 searchArea.addEventListener('keyup', (e) =>{
     let countryName = []
