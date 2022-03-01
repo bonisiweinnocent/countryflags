@@ -8,7 +8,8 @@ let country = document.querySelector('.country')
 let searchArea = document.querySelector('.searchField')
 let displaySearch = document.querySelector('.display')
 let sort = document.querySelector('.sortbtn')
-
+let errorsElem = document.querySelector('.errors')
+let successElem = document.querySelector('.success')
 
 // var storage = [];
 // if (localStorage["param"]) {
@@ -25,14 +26,30 @@ function countryList() {
 
 }
 function addCountry() {
-    const name = inputArea.value;
+
+var regEx = /^[A-Za-z]+$/;
+const name = inputArea.value;
+
+if (!regEx.test(name)) {
+
+    errorsElem.innerHTML = "Please enter a correct country name with no special charectors"
+
+}else
     countries.push(name)
+
+    successElem.innerHTML= "Country added succesfully"
+
 }
+
+ errorsElem.innerHTML=""; 
+ successElem.innerHTML=""  
+   
+
 
 function sortAlphabetically(){
     let sortedCountries = countries.sort().join('')
 
-    console.log(sortedCountries + 9999999999);
+    
     return sortedCountries
 }
 
@@ -45,7 +62,7 @@ searchArea.addEventListener('keyup', (e) =>{
     let countryName = []
    
     if(e.target.value){
-     countryName =countries.filter(contry => contry.toUpperCase().startsWith(e.target.value));
+     countryName =countries.filter(contry => contry.toLowerCase().startsWith(e.target.value));
      countryName = countryName.map(contry => `<li>${contry}<\li>`)
      
  
