@@ -18,11 +18,14 @@ function Country_flags() {
 
         return sortedCountries
     }
+    const timer = () => "";
+    
 
     return {
         addCountryData,
         sortAllCountries,
-        errorMsg
+        errorMsg,
+        timer
     }
 
 }

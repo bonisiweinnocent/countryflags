@@ -30,10 +30,15 @@ let successElem = document.querySelector('.success')
 let countryFlagInstance = Country_flags()
 
 function addCountry() {
+    setTimeout(function () {
+        errorsElem.innerHTML= countryFlagInstance.timer()
+
+    }, 3000);
     let flagRegex = /[\uD83C][\uDDE6-\uDDFF][\uD83C][\uDDE6-\uDDFF]/;
     var regEx = /^[A-Za-z]+$/;
     const name = inputArea.value;
     let flagEmoji = emojiInput.value
+    
     // implementing template literals below
     if (name === "" && flagEmoji === "") {
         errorsElem.innerHTML = `${errorsArray.empty}`
@@ -48,7 +53,7 @@ function addCountry() {
         else
             countryFlagInstance.addCountryData(flagEmoji, name)
 
-    successElem.innerHTML = countryFlagInstance.errorMsg()
+    // successElem.innerHTML = countryFlagInstance.errorMsg()
 
 }
 
