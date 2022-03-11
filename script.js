@@ -8,7 +8,7 @@ const errorsArray = {
     empty: "Input country details as required"
 }
 
-const data = countries.map(function (name, i) {
+let data = countries.map(function (name, i) {
     return {
         name, flag: flags[i]
     }
@@ -25,16 +25,32 @@ let displaySearch = document.querySelector('.display')
 let sort = document.querySelector('.sortbtn')
 let errorsElem = document.querySelector('.errors')
 let successElem = document.querySelector('.success')
+let hidebtnElement = document.querySelector('.hidebtn')
 
+let storag = [];
 
-let countryFlagInstance = Country_flags()
+if (!localStorage["param"]) {
+    
+    data = localStorage.setItem("param", JSON.stringify(data))
+    data = JSON.parse(localStorage.getItem("param"))
+}else {
+  
+    data = JSON.parse(localStorage.getItem("param"))
+    // localStorage.setItem("param", JSON.stringify(countryFlagInstance.getArr()));
 
-function addCountry() {
+    
+}
+
+let countryFlagInstance = Country_flags(data)
+
+function addCountry(){
     setTimeout(function () {
-        errorsElem.innerHTML= countryFlagInstance.timer()
+        errorsElem.innerHTML = countryFlagInstance.timer()
         successElem.innerHTML = countryFlagInstance.timer()
+        // localStorage.clear()
+       
 
-    }, 3000);
+    }, 5000);
     let flagRegex = /[\uD83C][\uDDE6-\uDDFF][\uD83C][\uDDE6-\uDDFF]/;
     var regEx = /^[A-Za-z]+$/;
     const name = inputArea.value;
@@ -51,39 +67,42 @@ function addCountry() {
         } else if (!flagRegex.test(flagEmoji)) {
             errorsElem.innerHTML = `${errorsArray.emoji}`
         }
-        else
-            countryFlagInstance.addCountryData(flagEmoji, name)
-
-    successElem.innerHTML = countryFlagInstance.errorMsg()
+        else {
+            countryFlagInstance.addCountryData(name,flagEmoji)
+            
+            successElem.innerHTML = countryFlagInstance.errorMsg()
+        }
+       
 
 }
 
 
 show.addEventListener('click', () => {
+    country.innerHTML= ''
     data.forEach((item) => {
 
-        // destructuring to extract values from an object
         let countryName = item.name
         let countryFlag = item.flag
-
+        
         let li = document.createElement("li");
         li.innerText = countryName + ' ' + countryFlag;
         country.appendChild(li);
+
+       
     });
 
 })
 addBtn.addEventListener('click', addCountry)
+
+
 sort.addEventListener('click', countryFlagInstance.sortAllCountries)
 
 
 searchArea.addEventListener('keyup', (e) => {
     let countryName = []
- 
     if (e.target.value) {
         countryName = data.filter(contry => contry.name.toLowerCase().startsWith(e.target.value));
         countryName = countryName.map(contry => `<li>${contry.name} ${contry.flag}<\li>`)
-
-
     }
     showResults(countryName);
 })
