@@ -19,20 +19,7 @@ function Country_flags(storages) {
 
     });
 
-// const showAll = () => {
-//     data.forEach((item) => {
 
-//         // destructuring to extract values from an object
-//         let countryName = item.name
-//         let countryFlag = item.flag
-        
-//         let li = document.createElement("li");
-//         li.innerText = countryName + ' ' + countryFlag;
-//         country.appendChild(li);
-
-       
-//     });
-// }
 
     const timer = () => "";
 
@@ -43,7 +30,7 @@ function Country_flags(storages) {
         errorMsg,
         timer,
         getArr,
-        // showAll
+        
         
     }
 
